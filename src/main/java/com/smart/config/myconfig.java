@@ -49,7 +49,7 @@ public class myconfig {
             .formLogin()
                 .loginPage("/signin") // URL to display the login page
                 .loginProcessingUrl("/userLogin") // URL to handle the login process
-                .defaultSuccessUrl("/user/profile", true) // URL to redirect after successful login
+                .defaultSuccessUrl("/user/index", true) // URL to redirect after successful login
                 .permitAll();
         return http.build();
     }
