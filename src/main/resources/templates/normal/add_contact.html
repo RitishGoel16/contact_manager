@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base :: layout(~{::title},~{::section})">
+
+<head>
+	<meta charset=" UTF-8">
+	<title>Add Contact</title>
+</head>
+
+<body>
+	<section>
+		<div class="card" style="margin-right: 1%;">
+			<div class="card-body">
+				<h1 class="text-center">Add Contact</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							<form action="" th:object="${contact}" enctype="multipart/form-data" method="POST"
+								th:action="@{user/process-contact}" class="mt-2">
+								<!--first-->
+								<div class="input-group">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text " style="height: 100%;"><i class="fa fa-plus"></i>
+										</div>
+
+									</div>
+
+									<input type="text" id="firstname" name="name" placeholder="enter name here"
+										class="form-control">
+
+								</div>
+								<!--second-->
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text " style="height: 100%;"><i
+												class="fas fa-user-alt"></i>
+										</div>
+
+									</div>
+
+									<input type="text" id="secondname" name="secondname" placeholder="enter nick name"
+										class="form-control">
+
+								</div>
+								<!--third-->
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text " style="height: 100%;"><i class="fa fa-phone"></i>
+										</div>
+
+									</div>
+
+									<input type="number" id="phone" name="phone" placeholder="enter phone number here"
+										class="form-control">
+
+								</div>
+								<!--fourth-->
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text " style="height: 100%;">@
+										</div>
+
+									</div>
+
+									<input type="email" id="email" name="email" placeholder="enter email here"
+										class="form-control">
+
+								</div>
+								<!--fifth-->
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text " style="height: 100%;"><i class="fa fa-briefcase"></i>
+										</div>
+
+									</div>
+
+									<input type="email" id="work" name="work" placeholder="enter your work here"
+										class="form-control">
+
+								</div>
+								<!--contact description-->
+								
+								<div class="form-group mt-3">
+									<textarea placeholder="enter your description" id="description" class="form-control" rows="10"></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+	</section>
+</body>
+
+</html>
