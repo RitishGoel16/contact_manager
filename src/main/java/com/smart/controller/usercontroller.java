@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.smart.dao.userrepository;
 import com.smart.entities.contact;
 import com.smart.entities.user;
-
 @Controller
 @RequestMapping("/user")
 public class usercontroller {
@@ -36,6 +36,17 @@ public class usercontroller {
 	public String upencontactform(Model m) {
 		m.addAttribute("title", "Aaadd Contact");
 		m.addAttribute("contact",new contact());
+		return "normal/add_contact";
+	}
+	@PostMapping("/process-contact")
+	public String processcontact(@ModelAttribute contact contact,Principal p) {
+		System.out.print("data"+contact);
+		
+		String username = p.getName(); 
+		user user = this.userrepository.findByEmail(username);
+		contact.setUser(user);
+		user.getContacts().add(contact);
+		this.userrepository.save(user);
 		return "normal/add_contact";
 	}
 }

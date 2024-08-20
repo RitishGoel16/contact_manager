@@ -9,11 +9,27 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" th:href="@{/css/style.css}" />
-	 
+
 	<title th:replace="${title}">dd</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 		integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		footer {
+			position: fixed;
+			bottom: 0;
+			
+			width: 100%;
+			z-index: 1000;
+			/* Adjust as needed */
+			background-color: #fff;
+			/* Optional: background color to ensure it's visible */
+			border-top: 1px solid #ddd;
+			/* Optional: border for visual separation */
+		}
+	</style>
+
+
 </head>
 
 <body>
@@ -45,7 +61,7 @@
 	</nav>
 	<!--sidebar-->
 
-	<div class="sidebar mt-5 ">
+	<div class="sidebar mt-2 ">
 		<span onclick="togglesidebar()" class="cross-btn">&times;</span>
 		<a th:href="@{/user/index}" class="item"><i class="fa-solid fa-house-chimney"></i> HOME</a>
 		<a href="" class="item"><i class="fas fa-id-card-alt"></i> View Context</a>
@@ -63,18 +79,18 @@
 
 	<!--content area-->
 
-	<div class="content"><i onclick="togglesidebar()" class="fas fa-bars m-3"></i>
+	<div class="content mt-5"><i onclick="togglesidebar()" class="fas fa-bars mt-3 m-2"></i>
 		<div th:insert="${content}"></div>
 	</div>
 
-	<h1 class="text-center bg-primary" style="background-color: aqua;color:white;text-align: 
-	center;position: fixed;bottom: 0;width: 100%;">@Copyright-Contact Manager</h1>
+	<footer class="text-center bg-primary" style="padding:15px 0;">
+		@Copyright-Contact Manager</footer>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-		<script th:src="@{/js/script.js}"></script>
+	<script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

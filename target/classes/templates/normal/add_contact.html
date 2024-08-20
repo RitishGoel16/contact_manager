@@ -7,21 +7,23 @@
 </head>
 
 <body>
-	<section>
+	<section style="margin-bottom:8vh;">
 		<div class="card" style="margin-right: 1%;">
 			<div class="card-body">
 				<h1 class="text-center">Add Contact</h1>
 				<div class="container-fluid mt-1">
 					<div class="row">
-						<div class="col-md-10 offset-md-1">
+						<div class="col-md-8 offset-md-2">
 							<form action="" th:object="${contact}" enctype="multipart/form-data" method="POST"
-								th:action="@{user/process-contact}" class="mt-2">
+								th:action="@{process-contact}" class="mt-2">
 								<!--first-->
 								<div class="input-group">
 
 									<div class="input-group-prepend">
 
-										<div class="input-group-text " style="height: 100%;"><i class="fa fa-plus"></i>
+										<div class="input-group-text " style="height: 100%;"><i class="fa fa-plus">
+
+											</i>
 										</div>
 
 									</div>
@@ -50,7 +52,8 @@
 
 									<div class="input-group-prepend">
 
-										<div class="input-group-text " style="height: 100%;"><i class="fa fa-phone"></i>
+										<div class="input-group-text " style="height: 100%;">
+											<i class="fa fa-phone"></i>
 										</div>
 
 									</div>
@@ -78,19 +81,28 @@
 
 									<div class="input-group-prepend">
 
-										<div class="input-group-text " style="height: 100%;"><i class="fa fa-briefcase"></i>
+										<div class="input-group-text " style="height: 100%;"><i
+												class="fa fa-briefcase"></i>
 										</div>
 
 									</div>
 
-									<input type="email" id="work" name="work" placeholder="enter your work here"
+									<input type="text" id="work" name="work" placeholder="enter your work here"
 										class="form-control">
 
 								</div>
 								<!--contact description-->
-								
+
 								<div class="form-group mt-3">
-									<textarea placeholder="enter your description" id="description" class="form-control" rows="10"></textarea>
+									<textarea placeholder="enter your description"name="description" id="description" class="form-control"
+										rows="10"></textarea>
+								</div>
+								<!--Image-->
+								<div class="Custom-file  mt-3">
+									<input class="form-control" type="file" name="profileimage">
+								</div>
+								<div class="container text-center mt-3">
+									<button class="btn btn-outline-primary">Save Contact</button>
 								</div>
 							</form>
 						</div>
