@@ -32,7 +32,7 @@
 									th:text="${c.email}"></span></a></td>
 							<td class="text-center" th:text="${c.phone}">@mdo</td>
 							<td class="text-center"><button class="btn btn-primary ">update</button>
-								<button class="btn btn-danger ">delete</button></td>
+								<a  th:onclick="|deletecontact(${c.id})|"class="btn btn-danger ">delete</a></td>
 						</tr>
 
 					</tbody>
