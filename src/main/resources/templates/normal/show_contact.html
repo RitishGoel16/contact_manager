@@ -31,8 +31,12 @@
 								th:href="@{'/user/'+${c.id}+'/show-contact'}"><span
 									th:text="${c.email}"></span></a></td>
 							<td class="text-center" th:text="${c.phone}">@mdo</td>
-							<td class="text-center"><button class="btn btn-primary ">update</button>
-								<a  th:onclick="|deletecontact(${c.id})|"class="btn btn-danger ">delete</a></td>
+							<td class="text-center d-flex ">
+								<form th:action="@{'/user/update-contact/'+${c.id}}" method="post">
+									<button  class="btn btn-primary m-1 ">update</button>
+								</form> <a th:onclick="|deletecontact(${c.id})|"
+								class="btn btn-danger  m-1 ">delete</a>
+							</td>
 						</tr>
 
 					</tbody>
