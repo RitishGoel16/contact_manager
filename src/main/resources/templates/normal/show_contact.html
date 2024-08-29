@@ -11,8 +11,16 @@
 		<div class="card" style="padding: 0 3%;">
 			<div card-body>
 				<h1 class="text-center">Your contacts</h1>
-				<table class="table">
-					<thead>
+
+				<!--search-->
+				<div class="search-container my-4">
+					<input onkeyup="search()" id="search-input" type="text"
+						class="form-control" placeholder="search your contacts">
+					<div class="search-result"></div>
+				</div>
+				<div class="table-responsive">
+				<table class="table table-hover">
+					<thead >
 						<tr>
 							<th scope="col">S no.</th>
 							<th scope="col">Name</th>
@@ -32,8 +40,9 @@
 									th:text="${c.email}"></span></a></td>
 							<td class="text-center" th:text="${c.phone}">@mdo</td>
 							<td class="text-center d-flex ">
-								<form th:action="@{'/user/update-contact/'+${c.id}}" method="post">
-									<button  class="btn btn-primary m-1 ">update</button>
+								<form th:action="@{'/user/update-contact/'+${c.id}}"
+									method="post">
+									<button class="btn btn-primary m-1 ">update</button>
 								</form> <a th:onclick="|deletecontact(${c.id})|"
 								class="btn btn-danger  m-1 ">delete</a>
 							</td>
@@ -42,6 +51,7 @@
 					</tbody>
 
 				</table>
+				</div>
 				<!--this is for pagination  -->
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
@@ -62,6 +72,7 @@
 
 
 	</section>
+
 </body>
 
 </html>

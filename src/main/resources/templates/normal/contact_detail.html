@@ -59,7 +59,9 @@
 						<th:block th:text="${contact.Description}">trtrtrtrt</th:block>
 					</div>
 					<div class="container mt-3">
-						<a th:href="@{/user/update-contact}" class="btn btn-primary w-100">update</a>
+						<form th:action="@{'/user/update-contact/'+${contact.id}}" method="post">
+									<button  class="btn btn-primary m-1 w-100 ">update</button>
+								</form>
 						<a  class="btn btn-danger w-100 mt-2"th:onclick="|deletecontact(${contact.id})|">delete</a>
 					</div>
 				</div>

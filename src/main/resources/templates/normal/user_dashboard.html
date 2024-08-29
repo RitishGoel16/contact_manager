@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base :: layout(~{::title},~{::section})">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base :: layout(~{::title},~{::section})">
 <head>
 <meta charset=" UTF-8">
 <title>Dashboard</title>
@@ -7,10 +8,24 @@
 
 <body>
 	<section>
-		<h1>only for user</h1>
-			<h3>USERNAME:- <span th:text="${user.name}"></span></h3>
-			<h3>USEREMAIL:- <span th:text="${user.email}"></span></h3>
-			
+		<div class="container text-center">
+			<div class="card">
+				<div class="card-body">
+					<img style="width: 200px; height: 200px;" class="profile_picture"
+						th:src="@{'/img/'+${user.imageurl}}" alt="">
+				</div>
+				<h1 class="text-center mt-2 text-secondary fst-italic">Start
+					Adding Your Contact On Cloud..</h1>
+				<a th:href="@{/user/add_contact}"
+					class="btn btn-primary btn-block text-uppercase m-4"> Add Your
+					Contact </a>
+				<p class="m-3">Welcome to <span class="fw-bold" th:text="${user.name}"></span> the ultimate solution
+					for managing your personal and professional contacts with ease and
+					efficiency. Our platform is designed to help you keep track of your
+					connections, organize important information, and maintain a
+					seamless workflow.</p>
+			</div>
+		</div>
 	</section>
 </body>
 
