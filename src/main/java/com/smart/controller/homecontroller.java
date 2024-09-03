@@ -1,7 +1,10 @@
 package com.smart.controller;
 
 import java.security.Principal;
+import java.security.SecureRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Range;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.smart.dao.userrepository;
 import com.smart.entities.user;
 import com.smart.helper.message;
+import com.smart.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -30,7 +34,9 @@ public class homecontroller {
 
     @Autowired
     private UserDetailsService userService;
-
+    
+    @Autowired
+    private EmailService emailservice;
     @ModelAttribute
     public void commonUser(Principal p, Model m) {
         if (p != null) {
@@ -100,4 +106,43 @@ public class homecontroller {
             return "signup";
         }
     }
+    @GetMapping("/forgot")
+	public String openemailform() {
+		return"forgot_email_form";
+	}
+
+	@PostMapping("/send-otp")
+	public String sendotp(@RequestParam("email") String email,HttpSession session) {
+		System.out.println(email);
+		SecureRandom random = new SecureRandom();
+        int otp = 100000 + random.nextInt(900000); // Generates a number between 100000 and 999999
+        System.out.println("otp"+otp);
+        String subject="Otp from SCM";
+        String message="<div style=>"+"<h1>OTP ="+otp+"</h1>";
+        String to=email;
+        boolean flag=this.emailservice.SendEmail(subject, message, to);
+        if(flag) {
+        	return "verify_otp";
+        }
+        else {
+        	session.setAttribute("message", "check your email id");
+        	
+        	return "forgot_email_form";
+        }
+        
+		
+	}
+//	@PostMapping("/verify-otp")
+//	public String verifyotp(@RequestParam("otp") String otp,HttpSession session) {
+//		System.out.println(otp);
+//		SecureRandom random = new SecureRandom();
+//        int otp = 100000 + random.nextInt(900000); // Generates a number between 100000 and 999999
+//        System.out.println("otp"+otp);
+//        String subject="Otp from SCM";
+//        String message="<h1>OTP ="+otp+"</h1>";
+//        
+//        boolean flag=this.emailservice.SendEmail(subject, message, to);
+//       
+//		
+//	}
 }

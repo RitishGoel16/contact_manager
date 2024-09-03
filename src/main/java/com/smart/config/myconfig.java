@@ -43,7 +43,7 @@ public class myconfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeHttpRequests()
-                .requestMatchers("/", "/do_register", "/signup","/about", "/signin", "/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/", "/do_register", "/signup","/about","/forgot","/send-otp", "/signin", "/css/**", "/js/**", "/img/**").permitAll()
              .requestMatchers("/user/**").authenticated()
                 .and()
             .formLogin()

@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="normal/base :: layout(~{::title},~{::section})">
-
 <head>
 <meta charset=" UTF-8">
-<title>Add Contact</title>
+<title>Dashboard</title>
 </head>
 
 <body>
-	<section style="margin-bottom: 8vh;">
-		<div class="card" style="margin-right: 1%;">
+	<section>
+
+		<div class="card" style="margin-right: 1%; margin-bottom: 7vh;">
 			<div class="card-body">
-				<h1 class="text-center">Add Contact</h1>
+				<h1 class="text-center">Update Your Contact</h1>
 				<div class="container-fluid mt-1">
 					<div class="row">
 						<div class="col-md-8 offset-md-2">
 							<form action="" th:object="${contact}"
 								enctype="multipart/form-data" method="POST"
-								th:action="@{process-contact}" class="mt-2">
+								th:action="@{/user/process-update}" class="mt-2">
+								
+								<input type="hidden" th:value="${contact.id}" name="id">
+								
 								<!--first-->
+							
 								<div class="input-group">
-
+									
 									<div class="input-group-prepend">
 
 										<div class="input-group-text " style="height: 100%;">
@@ -29,8 +33,9 @@
 
 									</div>
 
-									<input type="text" id="firstname" name="name"
-										placeholder="enter name here" class="form-control">
+									<input th:value="${contact.name}" required type="text"
+										id="firstname" name="name" placeholder="enter name here"
+										class="form-control">
 
 								</div>
 								<!--second-->
@@ -44,7 +49,8 @@
 
 									</div>
 
-									<input type="text" id="secondname" name="secondname"
+									<input th:value="${contact.secondname}" type="text"
+										id="secondname" name="secondname"
 										placeholder="enter nick name" class="form-control">
 
 								</div>
@@ -59,8 +65,9 @@
 
 									</div>
 
-									<input type="number" id="phone" name="phone"
-										placeholder="enter phone number here" class="form-control">
+									<input th:value="${contact.phone}" type="number" id="phone"
+										name="phone" placeholder="enter phone number here"
+										class="form-control">
 
 								</div>
 								<!--fourth-->
@@ -72,8 +79,9 @@
 
 									</div>
 
-									<input type="email" id="email" name="email"
-										placeholder="enter email here" class="form-control">
+									<input th:value="${contact.email}" type="email" id="email"
+										name="email" placeholder="enter email here"
+										class="form-control">
 
 								</div>
 								<!--fifth-->
@@ -87,16 +95,17 @@
 
 									</div>
 
-									<input type="text" id="work" name="work"
-										placeholder="enter your work here" class="form-control">
+									<input th:value="${contact.work}" type="text" id="work"
+										name="work" placeholder="enter your work here"
+										class="form-control">
 
 								</div>
 								<!--contact description-->
 
 								<div class="form-group mt-3">
-									<textarea placeholder="enter your description"
-										name="description"  class="form-control"
-										rows="10"></textarea>
+									<textarea th:text="${contact.description}"
+										placeholder="enter your description" name="description"
+										class="form-control" rows="10"></textarea>
 								</div>
 								<!--Image-->
 								<div class="Custom-file  mt-3">
@@ -111,16 +120,6 @@
 				</div>
 			</div>
 		</div>
-		<script
-			src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
-			referrerpolicy="origin"></script>
-		<script>
-		      tinymce.init({
-		  selector: 'textarea#default-editor'
-		});
-    </script>
 
 	</section>
 </body>
-
-</html>

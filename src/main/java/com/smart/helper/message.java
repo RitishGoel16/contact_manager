@@ -1,12 +1,13 @@
 package com.smart.helper;
 
 public class message {
+	
+	
 	private String content;
 	private String type;
 	
 	
 	public message(String content, String type) {
-		super();
 		this.content = content;
 		this.type = type;
 	}

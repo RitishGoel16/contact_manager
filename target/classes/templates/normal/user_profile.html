@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base :: layout(~{::title},~{::section})">
+<head>
+<meta charset=" UTF-8">
+<title>profile</title>
+</head>
+
+<body>
+	<section style="margin-bottom: 8vh;">
+		<div class="card ml-3">
+			<div class="card-body">
+				<div class="container text-center">
+					<img style="width: 200px; height: 200px;" class="profile_picture"
+						th:src="@{'/img/'+${user.imageurl}}" alt="">
+					<h3>
+						<span th:text="${user.name}"></span>
+					</h3>
+					<table class="table">
+						<tbody>
+							<tr>
+								<th scope="col">#ID</th>
+								<td th:text="${user.id}"></td>
+
+
+							</tr>
+
+							<tr>
+								<th scope="col">Email</th>
+								<td scope="row" th:text="${user.email}">1</td>
+
+
+							</tr>
+
+							<tr>
+								<th scope="col">Role</th>
+								<td scope="row" th:text="${user.role}">1</td>
+
+
+							</tr>
+
+
+
+							<tr>
+								<th scope="col">Account active</th>
+								<td scope="row" th:text="${user.enabled}">1</td>
+
+
+							</tr>
+							<tr>
+								<th scope="col">About you</th>
+								<td scope="row" th:text="${user.about}">1</td>
+
+
+							</tr>
+
+
+						</tbody>
+
+					</table>
+
+					<div class="container mt-3">
+						<form th:action="@{'/user/update-contact/'+${user.id}}"
+							method="post">
+							<button class="btn btn-primary m-1 w-100 ">update</button>
+						</form>
+						<a class="btn btn-danger w-100 mt-2"
+							th:onclick="|deletecontact(${user.id})|">delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
