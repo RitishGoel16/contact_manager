@@ -8,6 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.smart.dao.userrepository; // Import repository interface
 
@@ -43,7 +48,7 @@ public class myconfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeHttpRequests()
-                .requestMatchers("/", "/do_register", "/signup","/about","/forgot","/send-otp", "/signin", "/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/", "/do_register", "/signup","/about","/change-password","/forgot","/send-otp","verify-otp", "/signin", "/css/**", "/js/**", "/img/**").permitAll()
              .requestMatchers("/user/**").authenticated()
                 .and()
             .formLogin()
@@ -53,6 +58,8 @@ public class myconfig {
                 .permitAll();
         return http.build();
     }
+ 
+
 
 }
 

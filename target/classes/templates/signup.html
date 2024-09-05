@@ -19,12 +19,12 @@
 							class="alert alert-primary" role="alert"><p th:text="${session.message.content}"></p>
 							<th:block th:text="${session.removeAttribute('message)}"></th:block></div> -->
 
-						<div th:if="${session.message}"
+						 <div th:if="${session.message}"
 							th:classappend="${session.message.type}"
 							class="alert alert-primary" role="alert">
 							<p th:text="${session.message.content}"></p>
 							<th:block th:remove="all"></th:block>
-						</div>
+						</div> 
 						<div class="container text-center">
 							<img style="width: 70px;" class="" th:src="@{/img/register.png}"
 								alt="" />

@@ -118,8 +118,8 @@ public class EmailService {
 			mimeMessage.setFrom(new InternetAddress(from));
 			mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			mimeMessage.setSubject(subject);
-//			mimeMessage.setText(message);
-			mimeMessage.setContent("message","text/html");
+//	mimeMessage.setText(message);
+			mimeMessage.setContent(message,"text/html");
 
 			Transport.send(mimeMessage);
 			System.out.println("Sent successfully");

@@ -7,17 +7,18 @@
 </head>
 <body>
 	<section>
-	<th:block th:if="${session.message}">
-			<p 
-				class="text-center aler-danger fs-4">[[${session.message}]]</p>
-
-			<th:block th:text="${@sessionhelper.removeSessionMessage()}"></th:block>
-		</th:block>
+	
 		<div class="container p-3 mt-4">
 			<div class="row">
 				<div class="col-md-8 offset-md-2 ">
 					<div class="card">
 						<div class="alert alert-success" role="alert">We Have Sent OTP To Your Email</div>
+						<!-- <th:block th:if="${session.message}">
+						
+							<p class="text-center alert-danger fs-4">[[${session.message}]]</p>
+							<th:block th:text="${@sessionhelper.removeSessionMessage()}"></th:block>
+							
+						</th:block> -->
 						<!-- <div class="card-header text-center fs-4">forgot Page</div> -->
 						<h3 class="text-center mt-4">Submit OTP Here</h3>
 						<form th:action="@{/verify-otp}" method="post">

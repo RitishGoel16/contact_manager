@@ -3,7 +3,6 @@ package com.smart.controller;
 import java.nio.file.Paths;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,11 +82,13 @@ public class usercontroller {
 			contact.setUser(user);
 			user.getContacts().add(contact);
 			this.userrepository.save(user);
+
 			session.setAttribute("message", new message("your contact is added !!", "success"));
 
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 			e.printStackTrace();
+
 			session.setAttribute("message", new message("Something went wrong..Try Again !!", "danger"));
 
 		}
@@ -135,7 +136,9 @@ public class usercontroller {
 			 * failed m.addAttribute("error", "Failed to delete the image file."); } } }
 			 */
 			this.contactrepository.delete(contact);
-			session.setAttribute("message", new message("contact deleted", "success"));
+			/*
+			 * session.setAttribute("message", new message("contact deleted", "success"));
+			 */
 		}
 
 		return "redirect:/user/show-contact/0";
@@ -206,9 +209,13 @@ public class usercontroller {
 		if (this.passwordEncoder.matches(oldpassword, oldpass)) {
 			user.setPassword(this.passwordEncoder.encode(newpassword));
 			this.userrepository.save(user);
+
 			session.setAttribute("message", new message("Your Password Changed Succesfully", "success"));
+
 		} else {
+
 			session.setAttribute("message", new message("Your oldPassword is wrong ", "danger"));
+
 			return "normal/settings";
 		}
 		/*
@@ -217,5 +224,5 @@ public class usercontroller {
 		 */
 		return "redirect:/user/index";
 	}
-	
+
 }
